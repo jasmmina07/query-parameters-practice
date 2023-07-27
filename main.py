@@ -1,6 +1,5 @@
 import requests
 
-
 class RandomUser:
     def __init__(self) -> None:
         self.url = 'https://randomuser.me/api/'
@@ -15,7 +14,11 @@ class RandomUser:
         Returns:
             list: lsit of users
         '''
-        pass
+        number={
+            'results' : n
+        }
+        data=requests.get(self.url,params=number)
+        return data.json()
     
     def get_user_by_gender(self, gender: str) -> dict:
         '''return specify whether only male or only female users generated.\
@@ -27,7 +30,11 @@ class RandomUser:
         Returns:
             str: user
         '''
-        pass
+        parameters={
+            'gender' : gender
+        }
+        data=requests.get(self.url,params=parameters)
+        return data.json()
     
     def get_users_by_gender(self, n: int, gender: str) -> dict:
         '''return specify whether only male or only female users generated.\
@@ -40,7 +47,12 @@ class RandomUser:
         Returns:
             str: user
         '''
-        pass
+        parameters={
+            'gender' : gender,
+            'results' : n
+        }
+        data=requests.get(self.url,params=parameters)
+        return data.json()
     
     def get_user_by_nat(self, nat: str) -> dict:
         '''get user nationality from randomuser
@@ -51,7 +63,11 @@ class RandomUser:
         Returns:
             str: user
         '''
-        pass
+        parameters={
+            'nationality' : nat
+        }
+        data=requests.get(self.url,params=parameters)
+        return data.json()
     
     def get_users_by_nat(self, n: int, nat: str) -> dict:
         '''get user nationality from randomuser
@@ -63,7 +79,12 @@ class RandomUser:
         Returns:
             str: user
         '''
-        pass
+        parameters={
+            'nationality' : nat,
+            'results' : n
+        }
+        data=requests.get(self.url,params=parameters)
+        return data.json()
     
     def get_specific_field(self, field: str) -> dict:
         '''get user specific field from randomuser
@@ -77,7 +98,11 @@ class RandomUser:
         Returns:
             dict: data
         '''
-        pass
+        parameters={
+            'inc' : field
+        }
+        data=requests.get(self.url,params=parameters)
+        return data.json()
     
     def get_users_specific_field(self, n: int, field: str) -> list:
         '''get user specific field from randomuser
@@ -92,4 +117,9 @@ class RandomUser:
         Returns:
             lsit: list of user data
         '''
-        pass
+        parameters={
+            'inc' : field,
+            'results' : n
+        }
+        data=requests.get(self.url,params=parameters)
+        return data.json()
